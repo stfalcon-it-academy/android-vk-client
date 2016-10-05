@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">VkClient</string>
+    <string name="button_text">Hello world!</string>
+</resources>

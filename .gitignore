@@ -32,4 +32,3 @@ android/proguard/
 *.iws
 .idea/
 build/
-.gradle

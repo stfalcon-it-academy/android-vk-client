@@ -1,0 +1,19 @@
+<resources>
+
+    <plurals name="fiends_plurals">
+        <item quantity="zero">No friends</item>
+        <item quantity="one">%d friend</item>
+        <item quantity="few">%d friends</item>
+        <item quantity="many">%d friends</item>
+        <item quantity="other">%d friends</item>
+    </plurals>
+
+    <plurals name="followers_plurals">
+        <item quantity="zero">No followers</item>
+        <item quantity="one">%d follower</item>
+        <item quantity="few">%d followers</item>
+        <item quantity="many">%d followers</item>
+        <item quantity="other">%d followers</item>
+    </plurals>
+
+</resources>

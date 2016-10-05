@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">VkClient</string>
-    <string name="button_text">Hello world!</string>
+
+    <string name="online">online</string>
+    <string name="offline">offline</string>
+    <string name="message">Message</string>
+    <string name="friends">Friends</string>
+    <string name="mutual">mutual</string>
+    <string name="city">City</string>
+    <string name="full_info">Full information</string>
+    <string name="photos">Photos</string>
+    <string name="action_send_gift">Send a gift</string>
+
 </resources>

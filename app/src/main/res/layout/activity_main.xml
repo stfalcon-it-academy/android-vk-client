@@ -1,18 +1,178 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/activity_margin">
-
-    <TextView
+    android:background="@color/grey">
+    
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Portrait"/>
+        android:orientation="vertical">
 
-    <include
-        layout="@layout/part_demo"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
 
+            <ImageView
+                android:id="@+id/ivAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"/>
 
-</LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/shape_top_gradient"
+                android:alpha="0.7"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/shape_bottom_gradient"
+                android:alpha="0.7"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.stfalcon.vkclient.ui.custom.StatusBarSpace
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@android:color/transparent"
+                    app:theme="@style/ToolBarStyle"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/tvOnlineStatus"
+                android:layout_marginLeft="@dimen/activity_margin"
+                android:layout_marginStart="@dimen/activity_margin"
+                android:layout_marginBottom="2dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:id="@+id/tvOnlineStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/activity_margin"
+                android:layout_marginRight="@dimen/activity_margin"
+                android:layout_marginBottom="@dimen/activity_margin"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:alpha="0.6"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/activity_margin_small"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/message"
+                    android:theme="@style/PrimaryButton"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/friends"
+                    android:drawableRight="@drawable/ic_menu_down_grey600_18dp"
+                    android:theme="@style/SecondaryButton"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/activity_margin"
+                android:paddingRight="@dimen/activity_margin"
+                android:paddingBottom="@dimen/activity_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvFriendsInfo"
+                    style="@style/InfoItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_margin"
+                    android:drawableStart="@drawable/ic_account_multiple_grey600_24dp"
+                    android:drawableLeft="@drawable/ic_account_multiple_grey600_24dp"/>
+
+                <TextView
+                    android:id="@+id/tvFollowersInfo"
+                    style="@style/InfoItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_margin"
+                    android:drawableStart="@drawable/ic_rss_grey600_24dp"
+                    android:drawableLeft="@drawable/ic_rss_grey600_24dp"/>
+
+                <TextView
+                    android:id="@+id/tvCityInfo"
+                    style="@style/InfoItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_margin"
+                    android:drawableStart="@drawable/ic_home_grey600_24dp"
+                    android:drawableLeft="@drawable/ic_home_grey600_24dp"/>
+
+                <TextView
+                    android:id="@+id/tvFullInfo"
+                    style="@style/InfoItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_margin"
+                    android:text="@string/full_info"
+                    android:textColor="@color/colorPrimary"
+                    android:drawableStart="@drawable/ic_dots_horizontal_grey600_24dp"
+                    android:drawableLeft="@drawable/ic_dots_horizontal_grey600_24dp"
+                    android:alpha="1.0"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <include
+            layout="@layout/part_divider_shadow_top"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_margin"
+            android:background="@android:color/white">
+
+            <TextView
+                android:id="@+id/tvPhotosTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>

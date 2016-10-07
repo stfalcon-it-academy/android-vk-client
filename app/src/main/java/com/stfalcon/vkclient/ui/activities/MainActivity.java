@@ -3,6 +3,7 @@ package com.stfalcon.vkclient.ui.activities;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.stfalcon.vkclient.R;
 import com.stfalcon.vkclient.model.User;
+import com.stfalcon.vkclient.ui.adapters.UserPhotosRecyclerAdapter;
 import com.stfalcon.vkclient.utils.AppUtils;
 import com.stfalcon.vkclient.utils.Fixtures;
 import com.stfalcon.vkclient.utils.StringFormatter;
@@ -110,6 +112,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initPhotos(List<String> photos) {
-
+        photosRecycler.setAdapter(new UserPhotosRecyclerAdapter(photos));
+        photosRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
     }
 }

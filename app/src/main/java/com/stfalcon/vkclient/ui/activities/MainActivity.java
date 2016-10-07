@@ -3,6 +3,7 @@ package com.stfalcon.vkclient.ui.activities;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +18,8 @@ import com.stfalcon.vkclient.utils.AppUtils;
 import com.stfalcon.vkclient.utils.Fixtures;
 import com.stfalcon.vkclient.utils.StringFormatter;
 
+import java.util.List;
+
 /**
  * Created by troy379 on 30.09.16.
  */
@@ -27,21 +30,24 @@ public class MainActivity extends AppCompatActivity
     private ImageView ivAvatar;
     private TextView tvFullName, tvOnlineStatus;
     private TextView tvFriendsInfo, tvFollowersInfo, tvCityInfo, tvFullInfo, tvPhotosTitle;
+    private RecyclerView photosRecycler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ivAvatar = (ImageView)findViewById(R.id.ivAvatar);
-        tvFullName = (TextView)findViewById(R.id.tvFullName);
-        tvOnlineStatus = (TextView)findViewById(R.id.tvOnlineStatus);
+        ivAvatar = (ImageView) findViewById(R.id.ivAvatar);
+        tvFullName = (TextView) findViewById(R.id.tvFullName);
+        tvOnlineStatus = (TextView) findViewById(R.id.tvOnlineStatus);
 
-        tvFriendsInfo = (TextView)findViewById(R.id.tvFriendsInfo);
-        tvFollowersInfo = (TextView)findViewById(R.id.tvFollowersInfo);
-        tvCityInfo = (TextView)findViewById(R.id.tvCityInfo);
-        tvFullInfo = (TextView)findViewById(R.id.tvFullInfo);
-        tvPhotosTitle = (TextView)findViewById(R.id.tvPhotosTitle);
+        tvFriendsInfo = (TextView) findViewById(R.id.tvFriendsInfo);
+        tvFollowersInfo = (TextView) findViewById(R.id.tvFollowersInfo);
+        tvCityInfo = (TextView) findViewById(R.id.tvCityInfo);
+        tvFullInfo = (TextView) findViewById(R.id.tvFullInfo);
+        tvPhotosTitle = (TextView) findViewById(R.id.tvPhotosTitle);
+
+        photosRecycler = (RecyclerView) findViewById(R.id.photosRecycler);
 
         initToolbar();
 
@@ -76,7 +82,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initToolbar() {
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -99,5 +105,11 @@ public class MainActivity extends AppCompatActivity
         tvCityInfo.setText(StringFormatter.getCityString(this, user.getCity()));
 
         tvPhotosTitle.setText(StringFormatter.getPhotosTitle(this, user.getPhotos().size()));
+
+        initPhotos(user.getPhotos());
+    }
+
+    private void initPhotos(List<String> photos) {
+
     }
 }

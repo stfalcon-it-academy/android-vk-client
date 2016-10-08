@@ -42,6 +42,11 @@ public class UserPhotosRecyclerAdapter
         return urls.size();
     }
 
+    public void add(String url) {
+        urls.add(0, url);
+        notifyItemInserted(0);
+    }
+
     class PhotosViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imageView;

@@ -3,8 +3,11 @@ package com.stfalcon.vkclient.ui.activities;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +18,7 @@ import android.widget.TextView;
 
 import com.stfalcon.vkclient.R;
 import com.stfalcon.vkclient.model.User;
+import com.stfalcon.vkclient.ui.CurvedSpanLookup;
 import com.stfalcon.vkclient.ui.adapters.UserPhotosRecyclerAdapter;
 import com.stfalcon.vkclient.utils.AppUtils;
 import com.stfalcon.vkclient.utils.Fixtures;
@@ -34,6 +38,8 @@ public class MainActivity extends AppCompatActivity
     private TextView tvFriendsInfo, tvFollowersInfo, tvCityInfo, tvFullInfo, tvPhotosTitle;
     private RecyclerView photosRecycler;
 
+    private UserPhotosRecyclerAdapter recyclerAdapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +56,8 @@ public class MainActivity extends AppCompatActivity
         tvPhotosTitle = (TextView) findViewById(R.id.tvPhotosTitle);
 
         photosRecycler = (RecyclerView) findViewById(R.id.photosRecycler);
+
+        findViewById(R.id.messageButton).setOnClickListener(this);
 
         initToolbar();
 
@@ -78,9 +86,11 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-
-        }
+        recyclerAdapter.add("http://apps4.life/wp-content/uploads/2015/05/Google-Photos-icon-logo.png");
+        photosRecycler.getLayoutManager().scrollToPosition(0);
+//        switch (v.getId()) {
+//
+//        }
     }
 
     private void initToolbar() {
@@ -112,7 +122,17 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initPhotos(List<String> photos) {
-        photosRecycler.setAdapter(new UserPhotosRecyclerAdapter(photos));
+        recyclerAdapter = new UserPhotosRecyclerAdapter(photos);
+        photosRecycler.setAdapter(recyclerAdapter);
+        photosRecycler.setItemAnimator(new DefaultItemAnimator());
         photosRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+//        photosRecycler.setLayoutManager(new GridLayoutManager(this, 2));
+//        photosRecycler.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+
+//        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
+//        gridLayoutManager.setSpanSizeLookup(new CurvedSpanLookup());
+
+//        photosRecycler.setLayoutManager(gridLayoutManager);
     }
 }
